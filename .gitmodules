@@ -1,0 +1,3 @@
+[submodule "organizers"]
+	path = organizers
+	url = https://github.com/dialogue-evaluation/AGRR-2019.git
