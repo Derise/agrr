@@ -9,7 +9,6 @@ import numpy as np
 import pandas as pd
 import csv
 import os
-from pkg_resources import resource_filename
 
 from keras_transformer.position import TransformerCoordinateEmbedding
 from keras_transformer.attention import MultiHeadSelfAttention
@@ -157,8 +156,9 @@ if __name__ == "__main__":
     predictor.evaluate()
 
     try:
-        os.makedirs(resource_filename(__name__, "results"))
+        os.makedirs(os.path.join(os.path.dirname(os.path.dirname(__file__)), "results"))
     except FileExistsError:
         pass
-    pandas_samples.to_csv(resource_filename(__name__, "results/parsed.csv"), sep='\t', quoting=csv.QUOTE_NONE)
+    pandas_samples.to_csv(os.path.join(os.path.dirname(os.path.dirname(__file__)), "results/parsed.csv"),
+                          sep='\t', quoting=csv.QUOTE_NONE)
 
